@@ -1,0 +1,23 @@
+---
+- name: ensure memcached user exists
+  sudo: true
+  user: name=memcached createhome=false state=present system=yes
+  tags:
+    - memcached
+
+- name: ensure memcached exists
+  sudo: true
+  apt: pkg=memcached state=installed update-cache=yes
+  tags:
+    - packages
+    - memcached
+
+- name: install memcached configuration
+  sudo: true
+  template: src=memcached.conf.j2 dest=/etc/memcached.conf
+  notify: restart memcached
+  tags:
+    - config
+    - memcached
+
+

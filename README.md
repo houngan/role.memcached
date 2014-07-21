@@ -1,4 +1,5 @@
-role.memcached
-==============
+Ansible role for memcached
+========================
 
-Ansible memcached role
+Works and tested on:
+  * -Ubuntu 14.04-
